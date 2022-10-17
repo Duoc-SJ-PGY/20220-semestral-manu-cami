@@ -43,12 +43,11 @@ export class InicioPage implements OnInit {
     }
   ];
   constructor() { }
-  detalleAdd(item){
-    this.detalleCar.push(item);
-  }
-
-
   ngOnInit() {
   }
-
 }
+
+
+
+
+

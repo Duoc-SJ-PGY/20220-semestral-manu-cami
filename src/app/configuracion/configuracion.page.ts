@@ -11,12 +11,12 @@ export class ConfiguracionPage implements OnInit {
   {
     id: 1,
     nombre: 'Ubicación',
-    icono: 'pin',
+    icono: 'location-outline',
   },
   {
     id: 2,
     nombre: 'Notificaciones',
-    icono: '',
+    icono: 'notifications-outline',
   },
   ];
   listaConfLegal: Array<any> = [
@@ -28,12 +28,12 @@ export class ConfiguracionPage implements OnInit {
   {
     id: 2,
     nombre: 'Política de privacidad',
-    icono: 'document',
+    icono: 'warning-outline',
   },
   {
     id: 3,
     nombre: 'Agradecimientos',
-    icono: 'document',
+    icono: 'color-wand-outline',
   },
   ];
 
