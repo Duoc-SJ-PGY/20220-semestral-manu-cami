@@ -46,8 +46,3 @@ export class InicioPage implements OnInit {
   ngOnInit() {
   }
 }
-
-
-
-
-

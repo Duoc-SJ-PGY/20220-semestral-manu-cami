@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { TablinksPage } from './tablinks.page';
 
 const routes: Routes = [
@@ -8,7 +7,10 @@ const routes: Routes = [
     path: 'tablinks',
     component: TablinksPage,
     children: [
-
+    {
+      path:'login',
+      loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule)
+    },
     {
       path: 'perfil',
       loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
@@ -22,9 +24,13 @@ const routes: Routes = [
       loadChildren: () => import('../configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
     },
     {
+      path:'registro',
+      loadChildren: () => import('../registro/registro.module').then( m => m.RegistroPageModule)
+    },
+    
+    {
       path:'',
-      redirectTo: '/tablinks/inicio',
-      //redirectTo: '/tablinks/perfil',
+      redirectTo: '/login',
       pathMatch: 'full'
     },
 
@@ -32,18 +38,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tablinks/inicio',
+    redirectTo: '/tablinks/login',
     pathMatch: 'full'
   },
 ];
-/*
-const routes: Routes = [
-  {
-    path: '',
-    component: TablinksPage
-  }
-];
-*/
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
