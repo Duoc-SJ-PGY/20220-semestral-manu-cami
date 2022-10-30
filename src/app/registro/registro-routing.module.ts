@@ -5,7 +5,7 @@ import { RegistroPage } from './registro.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '',    
     component: RegistroPage
   }
 ];

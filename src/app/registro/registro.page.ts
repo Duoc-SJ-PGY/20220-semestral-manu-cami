@@ -15,7 +15,10 @@ import { AlertController, NavController} from '@ionic/angular';
 export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
-  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController) {
+  constructor(public fb: FormBuilder,
+              public alertController: AlertController,
+              public navCtrl: NavController) {
+                
     this.formularioRegistro = this.fb.group({
       nombre: new FormControl('' ,Validators.required),
       password: new FormControl('' ,Validators.required),
@@ -27,8 +30,8 @@ export class RegistroPage implements OnInit {
   }
 
   async guardar(){
-    const f = this.formularioRegistro.value;
-
+    var f = this.formularioRegistro.value;
+    
     if(this.formularioRegistro.invalid){
       const alert = await this.alertController.create({
         header: '¡Datos incompletos!',
@@ -43,7 +46,7 @@ export class RegistroPage implements OnInit {
 
   const usuario = {
     nombre: f.nombre,
-    password: f.password
+    password: f.password 
   };
 
     localStorage.setItem('usuario', JSON.stringify(usuario));

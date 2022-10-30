@@ -39,9 +39,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tablinks/inicio',
+    redirectTo: '/tablinks/inicio', 
     pathMatch: 'full'
   },
+
 ];
 
 @NgModule({

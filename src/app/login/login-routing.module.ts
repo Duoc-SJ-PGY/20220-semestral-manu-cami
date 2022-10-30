@@ -9,9 +9,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tablinks/login',
+    redirectTo: '/tablinks/login', 
     pathMatch: 'full'
   },
+  
 ];
 
 @NgModule({

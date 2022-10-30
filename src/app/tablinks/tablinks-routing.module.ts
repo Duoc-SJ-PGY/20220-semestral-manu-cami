@@ -30,7 +30,8 @@ const routes: Routes = [
     
     {
       path:'',
-      redirectTo: '/login',
+      //redirectTo: '/login', //modfificado 30-10-2022
+      redirectTo: '/tablinks/inicio', //modfificado 30-10-2022
       pathMatch: 'full'
     },
 
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tablinks/login',
+    redirectTo: './tablinks/login',
     pathMatch: 'full'
   },
 ];
