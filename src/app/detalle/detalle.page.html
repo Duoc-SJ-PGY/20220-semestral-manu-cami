@@ -1,17 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalle del producto</ion-title>
+    <!-- <ion-back-button slot="start" defaultHref="/inicio"></ion-back-button> -->
+    <ion-title>Carrito</ion-title>
+    <ion-button slot="end" (click)="gotoProductos()"><ion-icon name="home-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-icon name="home"></ion-icon>
-  <button ion-button color="primary" [routerLink]="['']">Volver a Productos</button>
-  <!--<ion-button (click)="goInicio()">Volver a Productos</ion-button>-->
-  <div>
-    <ion-card>
-
-
-    </ion-card>
-  </div>
+  <small>
+  <ion-list>
+    <ion-item *ngFor="let producto of listaCart">
+      <ion-card>
+        <ion-card-header>
+          
+          <img [src]="producto.foto">
+          <ion-card-subtitle>{{producto.nom_proveedor}}</ion-card-subtitle>
+          <ion-card-title>{{producto.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>$ {{producto.precio | currency:'CLP'}}</ion-card-subtitle>
+          <div>
+            <ion-button (click)="delCarrito(producto.id_producto)" class="btndelete"><ion-icon name="trash"></ion-icon>Eliminar del carrito</ion-button>
+          </div>
+          <br>
+         
+          <div>
+          <ion-item>
+          <ion-label>Cantidad : </ion-label>
+            <ion-select id="cantidad" name="selCantidad" onchange="cantidad(producto.id_producto)">
+              <ion-select-option value="v1">1</ion-select-option>
+              <ion-select-option value="v2">2</ion-select-option>
+              <ion-select-option value="v3">3</ion-select-option>
+              <ion-select-option value="v4">4</ion-select-option>
+              <ion-select-option value="v5">5</ion-select-option>
+              <ion-select-option value="v6">6</ion-select-option>
+              <ion-select-option value="v7">7</ion-select-option>
+              <ion-select-option value="v8">8</ion-select-option>
+              <ion-select-option value="v9">9</ion-select-option>
+              <ion-select-option value="v10">10</ion-select-option>
+            </ion-select>
+          </ion-item>
+          </div>
+          <br>
+          <ion-item>
+            <ion-label>Valor $ :</ion-label>
+            <input id="valorProducto" onchange="calcMonto()"  disabled="true">
+          </ion-item>
+        </ion-card-header>
+      </ion-card>
+      
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label>Monto Total $ :</ion-label>
+    <input id="montoTotal" disabled="true">
+    
+  </ion-item>
+</small>
 </ion-content>

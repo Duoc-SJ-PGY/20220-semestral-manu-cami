@@ -42,6 +42,25 @@ const routes: Routes = [
     redirectTo: '/tablinks/inicio', 
     pathMatch: 'full'
   },
+  //Las siguientes rutas son para que la APP encuentre las subrutas!!!. (30-10-2022)
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'detalle',
+    loadChildren: () => import('./detalle/detalle.module').then( m => m.DetallePageModule)
+  },
+  {
+    path: 'inicio',
+    redirectTo: '/tablinks/inicio',
+    pathMatch: 'full'
+  },
+  
 
 ];
 
