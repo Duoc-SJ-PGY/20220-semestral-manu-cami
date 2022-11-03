@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {retry} from 'rxjs/operators';
 import {ObjectUnsubscribedError, Observable} from 'rxjs';
+/*
+export interface Producto {
+  id_producto: number;
+  nombre: string;
+  precio: number;
+  descripcion: string;
+  imagen: string;
+  categoria: string;
+}*/
 
 @Injectable({
   providedIn: 'root'
@@ -22,16 +31,27 @@ apiURL = 'http://127.0.0.1:5000/';
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    this.listCarrito = this.setCantidad();
+  }
   
   getData() {
     return this.http.get(this.apiURL + 'productos/').pipe(retry(3));
   }
 
-  getData1(id) {
+  getData1(id:Number) {
     return this.http.get(this.apiURL + 'productos/'+id).pipe(retry(3));
   }
   
+  //setear en 0 la cantidad de cada producto.
+  setCantidad() {
+    for (let i = 0; i < this.listCarrito.length; i++) {
+      this.listCarrito[i].cantidad = 0;
+    }
+    return this.listCarrito;
+  }
+  
+
   addCart(id: Number) {
        
     this.getData1(id).subscribe((res) => {

@@ -11,8 +11,12 @@ import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
   styleUrls: ['./detalle.page.scss'],
 })
 export class DetallePage implements OnInit {
-  listaCart: any = [];
   
+  listaCart: any = [];
+  cant = 0;
+  formPrecio: number;
+  total = 0;
+
   constructor(
     private api: ApiService,
     private router: Router,
@@ -20,7 +24,14 @@ export class DetallePage implements OnInit {
   ) { 
 
     this.listaCart = this.api.listCarrito;
+
+    for (let i = 0; i < this.listaCart.length; i++) {
+      this.listaCart[i].cantidad = 0;
+    }
     console.log(this.listaCart);
+
+   
+
   }
   
   delCarrito(id: Number) {
@@ -34,30 +45,58 @@ export class DetallePage implements OnInit {
     console.log(this.listaCart);
   }
 
-  cantidad (id: Number) {
-    const cant = document.getElementById("cantidad");
-    const real = parseInt(cant.innerHTML);
+  updateCantidad (id: Number) {
+    let agregado = false;
     for (let i = 0; i < this.listaCart.length; i++) {
       if (this.listaCart[i].id_producto == id) {
-        this.listaCart[i].cantidad = real;
-        break;
+        //this.listaCart[i].cantidad = parseInt ((<HTMLInputElement>document.getElementById("cantidad")).value);
+        //console.log(parseInt ((<HTMLInputElement>document.getElementById("cantidad")).value));
+        this.formPrecio = this.listaCart[i].precio * this.listaCart[i].cantidad;
+        agregado = true;
+        return this.formPrecio;
+        //break;
       }
+    
     }
-    return this.listaCart;
+    //return this.calcMonto(id);
+    
   }
 
-  calcMonto(id: Number) {
-    let monto = 0;
+  
+
+  addCantidad(id: Number) {
     for (let i = 0; i < this.listaCart.length; i++) {
       if (this.listaCart[i].id_producto == id) {
-        monto = this.listaCart[i].precio * this.listaCart[i].cantidad;
-        break;
+        this.listaCart[i].cantidad += + 1;
+        //this.cant = this.listaCart[i].cantidad;
+        this.formPrecio = this.listaCart[i].precio * this.listaCart[i].cantidad;
+        
+        return this.listaCart[i].cantidad;
+        //break;
+        
+        
       }
     }
-    return monto;
+    
   }
 
- 
+  removeCantidad(id: Number) {
+    
+    for (let i = 0; i < this.listaCart.length; i++) {
+      if (this.listaCart[i].id_producto == id) {
+        this.listaCart[i].cantidad -=  1 ;
+        //this.cant = this.listaCart[i].cantidad;
+        this.formPrecio = this.listaCart[i].precio * this.listaCart[i].cantidad;
+        
+        return this.listaCart[i].cantidad;
+        //break;
+      }
+    }
+    
+  }
+
+  
+
   gotoProductos() {
     this.router.navigate(['../inicio']);
   }
