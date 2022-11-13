@@ -1,3 +1,52 @@
+<<<<<<< HEAD
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../api.service';
+
+
+@Component({
+  selector: 'app-configuracion',
+  templateUrl: './configuracion.page.html',
+  styleUrls: ['./configuracion.page.scss'],
+})
+export class ConfiguracionPage implements OnInit {
+
+  constructor(
+    private router: Router,
+    public alertController: AlertController,
+    private route: ActivatedRoute,
+    private api: ApiService
+  ) { }
+  
+  ubicacion(){
+    this.router.navigate(['/ubicacion']);
+  }
+
+  notificaciones(){
+    this.router.navigate(['/notificaciones']);
+  }
+  
+  condiciones(){
+    this.router.navigate(['/condiciones']);
+  }
+
+  politicas()
+  {
+    this.router.navigate(['/privacidad']);
+  }
+
+  agradecimientos()
+  {
+    this.router.navigate(['/agradecimientos']);
+  }
+
+  ngOnInit() {
+  }
+
+}
+=======
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -43,3 +92,4 @@ export class ConfiguracionPage implements OnInit {
   }
 
 }
+>>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38

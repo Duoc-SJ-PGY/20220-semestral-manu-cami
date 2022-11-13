@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {retry} from 'rxjs/operators';
 import {ObjectUnsubscribedError, Observable} from 'rxjs';
+<<<<<<< HEAD
+import { AlertController } from '@ionic/angular';
+=======
+>>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
 /*
 export interface Producto {
   id_producto: number;
@@ -30,11 +34,21 @@ cont = 0;
 apiURL = 'http://127.0.0.1:5000/';
 
   constructor(
+<<<<<<< HEAD
+    private http: HttpClient,
+    public alertController: AlertController
+  ) { 
+    //this.listCarrito = this.setCantidad();
+  }
+  
+  // metodos de consulta a la BD
+=======
     private http: HttpClient
   ) { 
     this.listCarrito = this.setCantidad();
   }
   
+>>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
   getData() {
     return this.http.get(this.apiURL + 'productos/').pipe(retry(3));
   }
@@ -50,6 +64,43 @@ apiURL = 'http://127.0.0.1:5000/';
     }
     return this.listCarrito;
   }
+<<<<<<< HEAD
+
+  // funciones de alerta 
+  async presentAlert2(){
+    const alert = await this.alertController.create({
+      header: 'Producto',
+      message: 'El producto ya se encuentra en el carrito',
+      buttons: ['OK'],
+  });
+  await alert.present();
+  }
+
+  async presentAlert(){
+    const alert = await this.alertController.create({
+      header: 'Producto',
+      message: 'Producto agregado al carrito',
+      buttons: ['OK'],
+  });
+  await alert.present();
+  }
+
+  // fin de funciones de alerta
+
+  //** */ inicio de funciones de carrito /** */
+  
+  addCart(id: Number) {
+    this.getData1(id).subscribe((res) => {
+      
+      this.listCarrito.push(res);
+           
+      console.log(this.listCarrito);
+      
+      return this.listCarrito;  
+    });
+  }
+}
+=======
   
 
   addCart(id: Number) {
@@ -73,3 +124,4 @@ apiURL = 'http://127.0.0.1:5000/';
 
 
 
+>>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
