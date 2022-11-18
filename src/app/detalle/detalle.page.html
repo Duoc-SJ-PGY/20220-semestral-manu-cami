@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-back-button slot="start" defaultHref="/inicio"></ion-back-button> -->
+    <ion-title>Carrito</ion-title>
+    <ion-button slot="end" (click)="gotoProductos()"><ion-icon name="home-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <small>
+  <ion-list>
+    <ion-item *ngFor="let producto of listaCart">
+      <ion-card>
+        <ion-card-header>
+          
+          <img [src]="producto.foto">
+          <ion-card-subtitle>{{producto.nom_proveedor}}</ion-card-subtitle>
+          <ion-card-title>{{producto.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>$ {{ producto.precio }}</ion-card-subtitle>
+          <div>
+            <ion-button (click)="delCarrito(producto.id_producto)" class="btndelete"><ion-icon name="trash"></ion-icon>Eliminar del carrito</ion-button>
+          </div>
+          <br>
+         
+          <div>
+          
+          <ion-row>
+            <ion-item>
+              <ion-label ion-col="6">Cantidad : </ion-label>
+              
+              <ion-input type="number" id = "cantidad" [(ngModel)]="producto.cantidad" [readonly]="true"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-button ion-col="3" (click)="addCantidad(producto.id_producto)" class="btnadd"><ion-icon name="add-outline"></ion-icon></ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-button ion-col="3" (click)="removeCantidad(producto.id_producto)" class="btnrem"><ion-icon name="remove-outline"></ion-icon></ion-button>
+            </ion-item>
+         
+          </ion-row>
+          <ion-item>
+            <ion-label>Valor $ :</ion-label>
+            <!--
+            <ion-input type="number" id="valor" name="valor" placeholder="" [readonly]="true">{{formPrecio}}</ion-input>
+            -->
+            <ion-input type="number" id="valor" name="valor" [(ngModel)]="producto.precio" placeholder="" [readonly]="true"></ion-input>
+            <!--<input id="valorProducto" onchange="calcMonto()"  disabled="true"> -->
+          </ion-item>
+                   
+          </div>
+          <br>
+          <!----
+          <ion-item>
+            <ion-label>Valor $ :</ion-label>
+            <ion-input type="number" id="valor" name="valor" placeholder="" [readonly]="true">{{formPrecio}}</ion-input>
+            <input id="valorProducto" onchange="calcMonto()"  disabled="true"> 
+          </ion-item>
+        --->
+        </ion-card-header>
+      </ion-card>
+      
+    </ion-item>
+  </ion-list>
+   
+</small>
+</ion-content>
+
+<footer>
+  <ion-item>
+    
+    <ion-label>Monto Total $ :</ion-label>
+    <ion-input id="number" id="montoTotal" name="montoTotal"  [readonly]="true" >{{formPrecio}}</ion-input>
+    <!--
+    <ion-input id="number" id="montoTotal" name="montoTotal"  [readonly]="true">{{total}}</ion-input>
+    --->
+    <ion-button (click)="gotoPago()"><ion-icon name="bag-check-outline"></ion-icon>ir al pago</ion-button>
+  </ion-item>
+
+</footer>

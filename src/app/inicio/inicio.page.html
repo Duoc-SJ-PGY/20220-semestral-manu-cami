@@ -1,0 +1,59 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+   
+      <ion-menu-button></ion-menu-button>
+      <ion-title size="large">Nuestros Productos</ion-title>
+      <ion-button slot="end" (click)="gotoCarrito()"><ion-icon name="cart"></ion-icon></ion-button>
+        
+  </ion-buttons>
+  
+</ion-toolbar>
+
+<ion-content>
+    
+  <ion-searchbar animated="true"  showCancelButton="false" type="text"></ion-searchbar>
+    <!---{(ngModel)}="productos.nombre_producto" (ionInput)="getItems($event)" placeholder="Buscar Producto"> --->
+  
+ 
+      <ion-slides pager="true" pager="false" #mySlider>
+        <ion-slide *ngFor='let item of miArray'>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Próximas ofertas...</ion-card-title>
+                    <img src='{{item.imagen}}'>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>{{item.descripcion}}</p>
+                </ion-card-content>
+                <ion-button (click)="swipeNext()"><ion-icon name="arrow-forward-circle-outline"></ion-icon></ion-button>
+            </ion-card>
+          </ion-slide>
+          
+      </ion-slides>
+  
+    <ion-item>
+      <ion-label>Aquí irá el filtro</ion-label>
+    </ion-item>
+ 
+  
+  <ion-list>
+    <ion-item *ngFor="let producto of productos">
+      <ion-card>
+        <ion-card-header>
+          <img [src]="producto.foto">
+
+          <ion-card-subtitle>{{producto.nom_proveedor}}</ion-card-subtitle>
+          <ion-card-title>{{producto.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>$ {{producto.precio}}</ion-card-subtitle>
+          <ion-button (click)="agregarCarrito(producto.id_producto)"><ion-icon name="cart"></ion-icon>Agregar al carrito</ion-button>
+                    
+        </ion-card-header>
+
+        <ion-card-content>{{producto.descripcion}}</ion-card-content>
+      </ion-card>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

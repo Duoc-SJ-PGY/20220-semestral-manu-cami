@@ -1,0 +1,7 @@
+{
+  "name": "app-papeleria",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
