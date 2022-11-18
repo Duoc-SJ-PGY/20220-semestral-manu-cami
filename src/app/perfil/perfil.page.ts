@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
@@ -63,20 +62,4 @@ export class PerfilPage implements OnInit {
   }
 
 }
-=======
-import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.page.html',
-  styleUrls: ['./perfil.page.scss'],
-})
-export class PerfilPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
->>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38

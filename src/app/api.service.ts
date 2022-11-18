@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {retry} from 'rxjs/operators';
 import {ObjectUnsubscribedError, Observable} from 'rxjs';
-<<<<<<< HEAD
 import { AlertController } from '@ionic/angular';
-=======
->>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
 /*
 export interface Producto {
   id_producto: number;
@@ -32,9 +29,8 @@ listCarrito: any = [];
 cont = 0;
 
 apiURL = 'http://127.0.0.1:5000/';
-
+//apiURL = 'https://applapileria.azurewebsites.net/';
   constructor(
-<<<<<<< HEAD
     private http: HttpClient,
     public alertController: AlertController
   ) { 
@@ -42,13 +38,6 @@ apiURL = 'http://127.0.0.1:5000/';
   }
   
   // metodos de consulta a la BD
-=======
-    private http: HttpClient
-  ) { 
-    this.listCarrito = this.setCantidad();
-  }
-  
->>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
   getData() {
     return this.http.get(this.apiURL + 'productos/').pipe(retry(3));
   }
@@ -64,7 +53,6 @@ apiURL = 'http://127.0.0.1:5000/';
     }
     return this.listCarrito;
   }
-<<<<<<< HEAD
 
   // funciones de alerta 
   async presentAlert2(){
@@ -100,28 +88,7 @@ apiURL = 'http://127.0.0.1:5000/';
     });
   }
 }
-=======
-  
-
-  addCart(id: Number) {
-       
-    this.getData1(id).subscribe((res) => {
-      if (this.listCarrito.indexOf(res) === -1){ //Si el objeto no existe en el carrito
-        
-        this.listCarrito.push(res);
-      }
-      else{
-        alert("El producto ya se encuentra en el carrito");
-      }
-      this.cont += 1;
-      console.log(this.listCarrito);
-      //return this.cont.valueOf();
-      return this.listCarrito;  
-    });
-
-  }
-  }
 
 
 
->>>>>>> 5192edfb4e6a0d0ab99b01474280bb62b835cf38
+
