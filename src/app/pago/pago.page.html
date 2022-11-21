@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar Pago</ion-title>
+    <ion-back-button slot="start" defaultHref="/detalle"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+  <!---<b><code>confirmación de carro y datos de envío</code></b> --->
+    <ion-grid>
+      <ion-row>
+        <ion-col>Cant.</ion-col>
+        <ion-col size="8">Producto</ion-col>
+        <ion-col>$</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-item *ngFor="let item of lista">
+    <ion-grid  id="listProductos">
+      <ion-row>
+        <ion-col>{{item.cantidad}}</ion-col>
+        <ion-col size="8">{{item.nombre_producto}}</ion-col>
+        <ion-col>{{item.precio}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col id="total">Total  $ {{total}}</ion-col>  
+          
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Dirección de envío</ion-label>
+        <ion-input id="inputDir"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Teléfono de quien recibe</ion-label>
+        <ion-input id="inputFono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre de quien recibe</ion-label>
+        <ion-input id="inputRecibe"></ion-input>
+      </ion-item>
+
+    
+   
+  <ion-button expand="block" (click)="confirmarPago()">Confirmar</ion-button>
+ 
+</ion-content>

@@ -96,6 +96,14 @@ const routes: Routes = [
     path: 'configuracion',
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
+  {
+    path: 'pago',
+    loadChildren: () => import('./pago/pago.module').then( m => m.PagoPageModule)
+  },
+  {
+    path: 'medio-pago',
+    loadChildren: () => import('./medio-pago/medio-pago.module').then( m => m.MedioPagoPageModule)
+  },
   
 
 

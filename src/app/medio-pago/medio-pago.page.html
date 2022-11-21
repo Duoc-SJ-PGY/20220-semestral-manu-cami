@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>WEBPAY</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-grid>
+      <ion-row>        
+        <ion-col size="6">
+          <ion-card id="img-logo">
+            <!---<ion-img src="/src/assets/icon/Lapilería.png"></ion-img> --->
+            <ion-card-content>              
+              <ion-img width="20" height="20" src="/assets/img/logo.png"></ion-img>
+            </ion-card-content>
+          </ion-card>         
+        </ion-col>
+        <ion-col size ="6">
+          <ion-card id="img-monto">
+            <ion-card-content>
+              <ion-input [readonly]="true"><h1>Pagar: ${{pago}}</h1></ion-input>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>        
+      </ion-row>
+    </ion-grid>
+  
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card>
+            <ion-card-content (click)="pagoDebito()"><ion-icon name="card-outline"></ion-icon>  Débito</ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card>
+            <ion-card-content (click)="pagoCredito()"><ion-icon name="card-outline"></ion-icon>  Crédito</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card>
+            <ion-card-content (click)="pagOnePay()"><ion-icon name="card-outline"></ion-icon>  OnePay</ion-card-content>
+            <ion-card-content>y otras billeteras...</ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card>
+            <ion-card-content (click)="pagoPre()"><ion-icon name="card-outline"></ion-icon>  Prepago</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+        
+        <ion-col size="12">
+              <ion-row>
+                <ion-item>
+                  <ion-button (click)="anularcompra()">volver y anular venta</ion-button>
+                  <!----
+                  <ion-button id="hover-trigger" (click)="anularcompra()">volver y anular venta</ion-button>
+                  <ion-popover trigger="hover-trigger" triggerAction="hover">
+                    <ng-template>
+                      <ion-content class="ion-padding">haz clíck aquí para anular la venta y volver al inicio...</ion-content>
+                    </ng-template>
+                  </ion-popover>
+                  -->
+                </ion-item>
+              </ion-row>
+                
+            
+            
+              <ion-row>
+                <ion-card>
+                  <ion-item>
+                    <ion-card-content ><ion-icon name="shield-checkmark-outline"></ion-icon>  Esta transacción se está realizando a través de un medio seguro </ion-card-content>
+                  </ion-item>
+                </ion-card>
+              </ion-row>
+               
+        </ion-col>
+         
+    </ion-grid>
+  </div>
+
+  
+
+</ion-content>

@@ -72,6 +72,14 @@ export class InicioPage implements OnInit {
   await alert.present();
   }
 
+  async presentAlert3(){
+    const alert = await this.alertController.create({
+      header: 'Usuario',
+      message: 'Debe iniciar sesión para continuar',
+      buttons: ['OK'],
+  });
+  await alert.present();
+  }
   /*  método básico sin usar por el momento...
   agregarCarrito(id:number){
     
@@ -109,7 +117,13 @@ export class InicioPage implements OnInit {
 
   //para cambiar al page del detalle.
   gotoCarrito(){
-    this.router.navigate(['/detalle']);
+    var persona = localStorage.getItem('usuario');
+    if(persona == null){
+      this.presentAlert3();
+      this.router.navigate(['/login']);
+    }else{
+      this.router.navigate(['/detalle']);
+    }
   }
 
 

@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {retry} from 'rxjs/operators';
 import {ObjectUnsubscribedError, Observable} from 'rxjs';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+
 /*
 export interface Producto {
   id_producto: number;
@@ -29,15 +31,19 @@ listCarrito: any = [];
 cont = 0;
 
 apiURL = 'http://127.0.0.1:5000/';
-//apiURL = 'https://applapileria.azurewebsites.net/';
+//apiURL = 'lapileria.database.windows.net';
+
   constructor(
     private http: HttpClient,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private storage: Storage
   ) { 
     //this.listCarrito = this.setCantidad();
   }
   
+  // ***********************************************************************
   // metodos de consulta a la BD
+  // Consulta de productos
   getData() {
     return this.http.get(this.apiURL + 'productos/').pipe(retry(3));
   }
@@ -46,6 +52,14 @@ apiURL = 'http://127.0.0.1:5000/';
     return this.http.get(this.apiURL + 'productos/'+id).pipe(retry(3));
   }
   
+  //para consultar las comunas.
+  getComunas() {
+    return this.http.get(this.apiURL + 'comunas/').pipe(retry(3));
+  }
+
+
+  // ************************************************************************
+
   //setear en 0 la cantidad de cada producto.
   setCantidad() {
     for (let i = 0; i < this.listCarrito.length; i++) {
@@ -87,6 +101,9 @@ apiURL = 'http://127.0.0.1:5000/';
       return this.listCarrito;  
     });
   }
+
+
+
 }
 
 
