@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
 import { AlertController } from '@ionic/angular';
-//import { $ } from 'protractor';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-detalle',
@@ -12,33 +13,29 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./detalle.page.scss'],
 })
 export class DetallePage implements OnInit {
-  
+  cart = [];
   listaCart: any = [];
   formPrecio=0;
   //total = 0;
-  
+  val_prod = 0;
+  cant = 0;
+  precio = 0;
 
   constructor(
     private api: ApiService,
     private router: Router,
     private route: ActivatedRoute,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public storage: Storage
   ) { 
     // Se procede a obtener carrito de compras de la API a un array this.listacart
 
     this.listaCart = this.api.listCarrito;
-
-    //para incializar la cantidad en 1 de cada producto del carrito
-    for (let i = 0; i < this.listaCart.length; i++) {
-     
-      this.listaCart[i].cantidad = 1;
-      //this.total += this.listaCart[i].precio * this.listaCart[i].cantidad;
-    }
-    console.log(this.listaCart);  
-    
+   
 
   }
-
+// ********************************************
+// Sección de alertas.
   async presentAlert(){
     const alert = await this.alertController.create({
       header: 'Carrito',
@@ -48,6 +45,18 @@ export class DetallePage implements OnInit {
   await alert.present();
   }
 
+  async presentAlert2(){
+    const alert = await this.alertController.create({
+      header: 'Carrito',
+      message: 'No hay productos en el carrito',
+      buttons: ['OK'],
+  });
+  await alert.present();
+  }
+
+
+
+//*************************************************** */
   delCarrito(id: Number) {
     for (let i = 0; i < this.listaCart.length; i++) {
       
@@ -61,26 +70,6 @@ export class DetallePage implements OnInit {
     console.log(this.listaCart);
   }
 
-
-/*
-  updateCantidad (id: Number) {
-    
-    let agregado = false;
-    for (let i = 0; i < this.listaCart.length; i++) {
-      if (this.listaCart[i].id_producto == id) {
-                
-        this.formPrecio = this.listaCart[i].precio * this.listaCart[i].cantidad;
-       
-      }
-          
-      agregado = true;
-      //this.total += this.formPrecio;
-
-      return this.formPrecio;
-    }
-      
-  }
-  */
 
   
   addCantidad(id: Number) {
@@ -97,16 +86,14 @@ export class DetallePage implements OnInit {
           
           this.listaCart[i].cantidad += 1;
           cant = this.listaCart[i].cantidad;
-        }
-        
+          
+        }        
         precio = this.listaCart[i].precio;
-        break;                     
+        break;                 
           
         }
-    }
-    
+    }    
     this.formPrecio = precio * cant;
-    
     return this.listaCart;
   }
 
@@ -125,36 +112,59 @@ export class DetallePage implements OnInit {
         else{
           this.listaCart[i].cantidad -= 1;
           cant= this.listaCart[i].cantidad;
-          
+          precio = this.listaCart[i].precio;
         }
-        //this.listaCart[i].cantidad -=  cant; 
-        precio = this.listaCart[i].precio;
+        
+        //precio = this.listaCart[i].precio;
+        this.listaCart[i].precio = precio*cant;
         break;
                
       }
     }
-    //this.total = this.total - (precio * cant);
-    this.formPrecio = precio * cant;
-    //return this.listaCart.cantidad, this.formPrecio, this.total;
-    //console.log(this.total);
+        
+    this.formPrecio = precio;
     return this.listaCart;
   }
-/*
-  totalCarrito()
-  {
-    this.total = 0;
-    for (let i = 0; i < this.listaCart.length; i++) {
-      this.total += this.listaCart[i].precio * this.listaCart[i].cantidad;
-    }
-    return this.total;
-  }
-*/
+
+  //Volver a productos.
   gotoProductos() {
     this.router.navigate(['../inicio']);
   }
+
+  //Ir a página del pago
+  gotoPago(){
+    
+    if (this.listaCart.length == 0) {
+      this.presentAlert2();
+    }else{
+      for(let i = 0; i < this.listaCart.length; i++){
+        this.cant = this.listaCart[i].cantidad;
+        
+        this.cart.push(this.listaCart[i]);
+        
+        }
+        localStorage.setItem('total', this.formPrecio.toString());
+        this.listaCart = [];
+        this.api.listCarrito = [];
+      
+      localStorage.setItem('carrito', JSON.stringify(this.cart));
+      
+      this.router.navigate(['../pago']);
+    }
+    
+  }
+
+     
   
   ngOnInit() {
-        
+       //para incializar la cantidad en 1 de cada producto del carrito
+    for (let i = 0; i < this.listaCart.length; i++) {
+     
+      this.listaCart[i].cantidad = 1;
+      this.formPrecio += this.listaCart[i].precio * this.listaCart[i].cantidad;
+      //this.listaCart[i].precio = this.formPrecio;
+    }
+    console.log(this.listaCart); 
   }
   }
   

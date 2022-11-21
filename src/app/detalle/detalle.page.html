@@ -38,24 +38,17 @@
             </ion-item>
          
           </ion-row>
-          <ion-item>
-            <ion-label>Valor $ :</ion-label>
-            <!--
-            <ion-input type="number" id="valor" name="valor" placeholder="" [readonly]="true">{{formPrecio}}</ion-input>
-            -->
-            <ion-input type="number" id="valor" name="valor" [(ngModel)]="producto.precio" placeholder="" [readonly]="true"></ion-input>
-            <!--<input id="valorProducto" onchange="calcMonto()"  disabled="true"> -->
-          </ion-item>
-                   
+              <!---
+              <ion-item>
+                <ion-label>Valor $ :</ion-label>
+                
+                <ion-input type="number" id="valor" name="valor" placeholder="" [readonly]="true">{{producto.precio * producto.cantidad }}</ion-input>
+                
+              </ion-item>
+                -->         
           </div>
           <br>
-          <!----
-          <ion-item>
-            <ion-label>Valor $ :</ion-label>
-            <ion-input type="number" id="valor" name="valor" placeholder="" [readonly]="true">{{formPrecio}}</ion-input>
-            <input id="valorProducto" onchange="calcMonto()"  disabled="true"> 
-          </ion-item>
-        --->
+        
         </ion-card-header>
       </ion-card>
       
