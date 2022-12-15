@@ -11,7 +11,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./privacidad.page.scss'],
 })
 export class PrivacidadPage implements OnInit {
-
+  isModalOpen = false;
   constructor(
     private router: Router,
     public alertController: AlertController,
@@ -23,6 +23,9 @@ export class PrivacidadPage implements OnInit {
     this.router.navigate(['/configuracion']);
   }
 
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
   ngOnInit() {
   }
 

@@ -104,6 +104,18 @@ const routes: Routes = [
     path: 'medio-pago',
     loadChildren: () => import('./medio-pago/medio-pago.module').then( m => m.MedioPagoPageModule)
   },
+  {
+    path: 'banco',
+    loadChildren: () => import('./banco/banco.module').then( m => m.BancoPageModule)
+  },
+  {
+    path: 'banco2',
+    loadChildren: () => import('./banco2/banco2.module').then( m => m.Banco2PageModule)
+  },
+  {
+    path: 'recibo',
+    loadChildren: () => import('./recibo/recibo.module').then( m => m.ReciboPageModule)
+  },
   
 
 

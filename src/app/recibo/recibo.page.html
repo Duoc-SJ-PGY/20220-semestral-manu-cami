@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comprobante de pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-card id="img-logo2">      
+      <ion-card-content>              
+        <ion-img width="40" height="40" src="/assets/img/logo.png"></ion-img>
+      </ion-card-content>
+    </ion-card> 
+  </ion-item>
+  <ion-button expand="full" (click)="generarPDF()">Descargar Comprobante</ion-button>
+  
+  <ion-item>
+    <ion-card>
+      <ion-card-header>
+        <ion-button expand="full" (click)="goInicio()">Continuar comprando</ion-button>
+      </ion-card-header>
+    </ion-card>
+  </ion-item>
+  <ion-item>
+    <ion-card>
+      
+        <ion-card-content>
+          <ion-card-subtitle>{{this.dia}} / {{this.mes}} / {{this.anio}}</ion-card-subtitle>
+          <ion-card-subtitle>{{this.hora}} : {{this.minuto}}</ion-card-subtitle>
+        </ion-card-content>
+        
+      
+    </ion-card>
+  </ion-item>
+</ion-content>

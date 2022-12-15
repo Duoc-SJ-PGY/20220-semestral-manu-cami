@@ -26,11 +26,30 @@
           <ion-label position="floating">Confirmar Contraseña</ion-label>
           <ion-input formControlName="confirmacionPassword" type="password"></ion-input>
         </ion-item>
-        <br>
-        <ion-button (click)="guardar()">
-        Registrar
-        </ion-button>
+        <ion-item>
+          <ion-label position="floating">Rut (ej:11111111-1)</ion-label>
+          <ion-input formControlName="rut" type="txt" minlenght="10" maxlength="12"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">N° Tarjeta (16 digitos)</ion-label>
+          <ion-input formControlName="tarjeta" type="txt" minlenght="16" maxlength="16"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Dirección</ion-label>
+          <ion-input formControlName="direccion" type="txt" minlenght="10" maxlength="50"></ion-input>
+        </ion-item>           
       </form>
+      <ion-item >
+        <ion-label position = "floating">Comuna</ion-label>
+        <ion-select cancelText="Atrás" okText="Ok" [(ngModel)]="comuSelected" (ionChange)="setComuna()">
+          <ion-select-option *ngFor="let comu of comunas" [value]="comu" aria-required="true">
+            {{comu.nom_comuna}}
+          </ion-select-option>                    
+        </ion-select>      
+      </ion-item>
+      <ion-button class="btn-guardar"   (click)="guardar()">
+        Registrar
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -21,7 +21,7 @@
       <ion-row>
         <ion-col>{{item.cantidad}}</ion-col>
         <ion-col size="8">{{item.nombre_producto}}</ion-col>
-        <ion-col>{{item.precio}}</ion-col>
+        <ion-col>{{item.precio * item.cantidad}}</ion-col>
       </ion-row>
     </ion-grid>
   </ion-item>
@@ -34,17 +34,33 @@
       </ion-grid>
     </ion-item>
     
-      <ion-item>
+    <!------
+    <ion-item>
         <ion-label position="floating">Dirección de envío</ion-label>
-        <ion-input id="inputDir"></ion-input>
+        <ion-input id="inputDir" type="txt" minlength="30" maxlength="50" required></ion-input>
+      </ion-item>
+    -->
+      
+      <ion-item class="Set-Direccion">
+        <ion-label position ="stacked" position = "floating">Dirección de envío</ion-label>
+        <ion-select cancelText="Atrás" okText="Ok" [(ngModel)]="dirSelected" (ionChange)="setDireccion()">
+          <ion-select-option *ngFor="let dir of direcciones" [value]="dir" id="inputDir">
+            {{dir.direccion}}
+          </ion-select-option>                
+        </ion-select>      
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Teléfono de quien recibe</ion-label>
-        <ion-input id="inputFono"></ion-input>
+        <form action="">
+          <ion-label position="floating" >Teléfono de quien recibe (ej: 9xxxxxxxx)</ion-label>
+          <ion-input id="inputFono" type="tel" pattern="([0-9]{1})[0-9]{8}" maxlength="9">
+          </ion-input>
+        </form>
+       
       </ion-item>
       <ion-item>
+        
         <ion-label position="floating">Nombre de quien recibe</ion-label>
-        <ion-input id="inputRecibe"></ion-input>
+        <ion-input id="inputRecibe" minlength="10" maxlength="30" required></ion-input>
       </ion-item>
 
     

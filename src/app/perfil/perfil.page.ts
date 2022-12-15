@@ -12,7 +12,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class PerfilPage implements OnInit {
   usuario = JSON.parse(localStorage.getItem('usuario'));
-  nom = this.usuario.nombre;
+  nom:any; 
   
   constructor(
     private api: ApiService,
@@ -30,7 +30,7 @@ export class PerfilPage implements OnInit {
   });
   await alert.present();
   }
-
+  
 
   closeSesion(){
     this.nom = "Invitado";
@@ -58,7 +58,11 @@ export class PerfilPage implements OnInit {
   }
 
   ngOnInit() {
-    
+    if (this.usuario == null){
+      this.nom = "Invitado";
+    }else{
+      this.nom = this.usuario.nombre;
+    }
   }
 
 }

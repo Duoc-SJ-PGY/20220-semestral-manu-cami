@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
-
+//import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { SQLite  } from '@ionic-native/sqlite/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,6 +13,7 @@ export class AppComponent {
 
 
   currentPageTitle = 'Dashboard';
+  selectedIndex = 0;
 
   appPages = [
     {
@@ -39,13 +41,18 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private storage: Storage,
+    private sqlite: SQLite,
+
     
     ) {
     this.initializeApp();
+      
   }
 
+ 
   initializeApp() {
     this.platform.ready().then(() => {
+      
     });
   }
 }

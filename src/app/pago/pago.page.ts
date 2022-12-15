@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
+import { DireccionesService } from '../servicios/direcciones.service';
 
 
 
@@ -13,9 +15,13 @@ import { Storage } from '@ionic/storage';
   templateUrl: './pago.page.html',
   styleUrls: ['./pago.page.scss'],
 })
-export class PagoPage implements OnInit {
+export class PagoPage implements OnInit { 
   
   lista = [];
+  direcciones:any;
+  dir:any;
+  comuna:any;
+  dirSelected:any;
   
   total = localStorage.getItem('total');
   
@@ -25,7 +31,8 @@ export class PagoPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public alertController: AlertController,
-    public storage: Storage
+    public storage: Storage,
+    public direccionesService: DireccionesService
   ) {
     
         
@@ -67,22 +74,41 @@ export class PagoPage implements OnInit {
   }
  
   confirmarPago(){
-    var direccion = (<HTMLInputElement>document.getElementById('inputDir')).value;
+    var direccion = this.direcciones.direccion;
     var nombre = (<HTMLInputElement>document.getElementById('inputRecibe')).value;
     var fono = (<HTMLInputElement>document.getElementById('inputFono')).value;
-    
+    let recibe = {
+      nombre: nombre,
+      fono: fono,
+      direccion: direccion
+    };
     if(direccion == '' || nombre == '' || fono == ''){
       this.Formulario();
     } else {
-      localStorage.removeItem('carrito');
+      //localStorage.removeItem('carrito');
       this.mediopago();
+      
+      localStorage.setItem('recibe', JSON.stringify(recibe));
       this.router.navigate(['/medio-pago']);
     }
     
   }
+  getDirecciones(){
+    this.direccionesService.getDirecciones().subscribe((data: {}) => {
+      this.direcciones = data;
+      console.log(data);
+    });
+  }
+
+  setDireccion(){
+    //this.comuna = this.dirSelected.comuna;
+    this.dir = this.dirSelected.direccion;
+    console.log(this.dirSelected);
+    return this.dir;
+  }
 
   ngOnInit() {
-    
+    this.getDirecciones();
     this.traerCarrito();
     
   }
