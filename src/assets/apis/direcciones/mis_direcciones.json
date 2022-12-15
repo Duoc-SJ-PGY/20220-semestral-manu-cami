@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,		
+		"comuna": "La Florida",		
+		"direccion": "Av. Siempre Viva 123"
+	},
+	{
+		"id": 2,		
+		"comuna": "Macul",
+		"direccion": "El melocotón 2323"
+	},
+	{
+		"id": 3,
+		"comuna": "San Joaquin",
+		"direccion": "Quilimanyaro de la esquina 123"
+	},
+	{
+		"id": 4,
+		"comuna": "San Miguel",
+		"direccion": "Av. Baker Street 221B"
+	}
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "banco": "Banco Falabella",
+        "tarjeta": "1111222233334444"
+        
+    },
+    {
+        "id": 2,
+        "banco": "Banco Santander",
+        "tarjeta": "1111222233334444"
+        
+    },
+    {
+        "id": 3,
+        "banco": "Banco Estado",
+        "tarjeta": "4444555566667777"
+        
+    },
+    {
+        "id": 4,
+        "banco": "Banco de Chile",
+        "tarjeta": "4444555566667777"
+        
+    },
+    {
+        "id": 5,
+        "banco": "Banco BCI",
+        "tarjeta": "6666777788889999"
+        
+    }
+]

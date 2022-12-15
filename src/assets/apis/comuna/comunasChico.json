@@ -1,0 +1,174 @@
+[
+    
+    
+    {
+		"id_comuna": 83,
+		"id_provincia": 12,
+		"nom_comuna": "Colina"
+	},
+	{
+		"id_comuna": 84,
+		"id_provincia": 12,
+		"nom_comuna": "Lampa"
+	},
+    {
+		"id_comuna": 128,
+		"id_provincia": 19,
+		"nom_comuna": "Puente Alto"
+	},
+    {
+		"id_comuna": 273,
+		"id_provincia": 48,
+		"nom_comuna": "Cerrillos"
+	},
+	{
+		"id_comuna": 274,
+		"id_provincia": 48,
+		"nom_comuna": "Cerro Navia"
+	},
+	{
+		"id_comuna": 275,
+		"id_provincia": 48,
+		"nom_comuna": "Conchalí"
+	},
+	{
+		"id_comuna": 276,
+		"id_provincia": 48,
+		"nom_comuna": "El Bosque"
+	},
+    {
+		"id_comuna": 278,
+		"id_provincia": 48,
+		"nom_comuna": "Huechuraba"
+	},
+	{
+		"id_comuna": 279,
+		"id_provincia": 48,
+		"nom_comuna": "Independencia"
+	},
+	{
+		"id_comuna": 280,
+		"id_provincia": 48,
+		"nom_comuna": "La Cisterna"
+	},
+	{
+		"id_comuna": 281,
+		"id_provincia": 48,
+		"nom_comuna": "La Florida"
+	},
+	{
+		"id_comuna": 282,
+		"id_provincia": 48,
+		"nom_comuna": "La Granja"
+	},
+	{
+		"id_comuna": 283,
+		"id_provincia": 48,
+		"nom_comuna": "La Pintana"
+	},
+	{
+		"id_comuna": 284,
+		"id_provincia": 48,
+		"nom_comuna": "La Reina"
+	},
+	{
+		"id_comuna": 285,
+		"id_provincia": 48,
+		"nom_comuna": "Las Condes"
+	},
+	{
+		"id_comuna": 286,
+		"id_provincia": 48,
+		"nom_comuna": "Lo Barnechea"
+	},
+	{
+		"id_comuna": 287,
+		"id_provincia": 48,
+		"nom_comuna": "Lo Espejo"
+	},
+	{
+		"id_comuna": 288,
+		"id_provincia": 48,
+		"nom_comuna": "Lo Prado"
+	},
+	{
+		"id_comuna": 289,
+		"id_provincia": 48,
+		"nom_comuna": "Macul"
+	},
+	{
+		"id_comuna": 290,
+		"id_provincia": 48,
+		"nom_comuna": "Maipú"
+	},
+	{
+		"id_comuna": 291,
+		"id_provincia": 48,
+		"nom_comuna": "Pedro Aguirre Cerda"
+	},
+	{
+		"id_comuna": 292,
+		"id_provincia": 48,
+		"nom_comuna": "Peñalolén"
+	},
+	{
+		"id_comuna": 293,
+		"id_provincia": 48,
+		"nom_comuna": "Providencia"
+	},
+	{
+		"id_comuna": 294,
+		"id_provincia": 48,
+		"nom_comuna": "Pudahuel"
+	},
+	{
+		"id_comuna": 295,
+		"id_provincia": 48,
+		"nom_comuna": "Quilicura"
+	},
+	{
+		"id_comuna": 296,
+		"id_provincia": 48,
+		"nom_comuna": "Quinta Normal"
+	},
+	{
+		"id_comuna": 297,
+		"id_provincia": 48,
+		"nom_comuna": "Recoleta"
+	},
+	{
+		"id_comuna": 298,
+		"id_provincia": 48,
+		"nom_comuna": "Renca"
+	},
+	{
+		"id_comuna": 299,
+		"id_provincia": 48,
+		"nom_comuna": "San Joaquín"
+	},
+	{
+		"id_comuna": 300,
+		"id_provincia": 48,
+		"nom_comuna": "San Miguel"
+	},
+	{
+		"id_comuna": 301,
+		"id_provincia": 48,
+		"nom_comuna": "San Ramón"
+	},
+	{
+		"id_comuna": 302,
+		"id_provincia": 48,
+		"nom_comuna": "Santiago"
+	},
+	{
+		"id_comuna": 303,
+		"id_provincia": 48,
+		"nom_comuna": "Vitacura"
+	},
+	{
+		"id_comuna": 304,
+		"id_provincia": 48,
+		"nom_comuna": "Ñuñoa"
+	}
+]
