@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/medio"></ion-back-button>
+    <ion-title>{{medio.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Monto</ion-label>
+    <ion-input type="number" [(ngModel)]="monto" readonly>$ </ion-input>
+  </ion-item>
+  
+  <ng-container *ngIf="bancos">
+    <ion-item class="SelBanco">
+      <ion-label position ="stacked" position = "floating">Bancos</ion-label>
+      <ion-select cancelText="Atrás" okText="Ok" [(ngModel)]="bankSelected" (ionChange)="setBanco()">
+        <ion-select-option *ngFor="let bank of bancos" [value]="bank">
+          {{bank.banco}}
+        </ion-select-option>
+              
+      </ion-select>      
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Tarjeta N°: </ion-label>
+      <ion-input id="ncard" type="txt" readonly>{{this.cliente.tarjeta}}</ion-input>
+    </ion-item> 
+  
+  <ion-item class="numCuotas">
+    <ion-label position="floating">Cuotas</ion-label>
+    <ion-select id="cuotas" cancelText="Atrás" okText="Ok" [(ngModel)]="cuotas"  (ionChange)="setCuotas()"
+      [disabled]="this.medio.nombre != 'credito'">
+      <ion-select-option value="1">1</ion-select-option>
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="6">6</ion-select-option>
+      <ion-select-option value="12">12</ion-select-option>
+      <ion-select-option value="24">24</ion-select-option>
+    </ion-select>
+  </ion-item> 
+  <ion-item>
+    <ion-label position="stacked">RUT (Ej: 11235456-k) </ion-label>
+    <ion-input id="rut" required type="txt" minlenght="10" maxlength="12" disabled>{{this.cliente.rut}}</ion-input>
+    
+  </ion-item>
+  
+  <ion-button expand="block" (click)="pay()">Pagar</ion-button>
+  </ng-container>
+  
+</ion-content>
