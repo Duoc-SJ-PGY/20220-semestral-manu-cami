@@ -6,5 +6,20 @@
 </ion-header>
 
 <ion-content>
-
+  <div>Aquí visualizará su medio de pago de preferecnia luego de ser usado en el pago</div>
+  <ion-list>
+    <ion-item *ngFor="let item of medio"> <!----id, tarjeta, banco, medio(deb/cre), rut)------>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>N °: {{item.id}}</ion-card-title> 
+          <ion-card-subtitle>N° Tarjeta : {{item.tarjeta}}</ion-card-subtitle>
+          <ion-card-subtitle>Banco : {{item.banco}}</ion-card-subtitle>
+          <ion-card-subtitle>Medio pago : {{item.medio}}</ion-card-subtitle>
+          <ion-card-subtitle>Rut Cliente : {{item.rut}}</ion-card-subtitle>
+        </ion-card-header>      
+        
+      </ion-card>       
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>

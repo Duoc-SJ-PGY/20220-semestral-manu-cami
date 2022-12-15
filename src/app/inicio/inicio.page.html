@@ -15,26 +15,18 @@
     <!---{(ngModel)}="productos.nombre_producto" (ionInput)="getItems($event)" placeholder="Buscar Producto"> --->
   
  
-      <ion-slides pager="true" pager="false" #mySlider>
+      <ion-slides pager="true" #mySlider>
         <ion-slide *ngFor='let item of miArray'>
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>Próximas ofertas...</ion-card-title>
-                    <img src='{{item.imagen}}'>
-                </ion-card-header>
-                <ion-card-content>
-                    <p>{{item.descripcion}}</p>
-                </ion-card-content>
-                <ion-button (click)="swipeNext()"><ion-icon name="arrow-forward-circle-outline"></ion-icon></ion-button>
-            </ion-card>
-          </ion-slide>
+          <div>
+            <img src='{{item.imagen}}' style="border:ridge;" > 
+          </div>
+          <div>
+            <h3 [innerHTML]="item.descripcion"></h3>
+          </div>                   
+        </ion-slide>
           
       </ion-slides>
   
-    <ion-item>
-      <ion-label>Aquí irá el filtro</ion-label>
-    </ion-item>
- 
   
   <ion-list>
     <ion-item *ngFor="let producto of productos">

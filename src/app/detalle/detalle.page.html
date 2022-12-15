@@ -16,7 +16,7 @@
           <img [src]="producto.foto">
           <ion-card-subtitle>{{producto.nom_proveedor}}</ion-card-subtitle>
           <ion-card-title>{{producto.nombre_producto}}</ion-card-title>
-          <ion-card-subtitle>$ {{ producto.precio }}</ion-card-subtitle>
+          <ion-card-subtitle>$ {{ producto.precio * producto.cantidad}}</ion-card-subtitle> <!---  Cambio * cantidad -->
           <div>
             <ion-button (click)="delCarrito(producto.id_producto)" class="btndelete"><ion-icon name="trash"></ion-icon>Eliminar del carrito</ion-button>
           </div>
@@ -60,12 +60,9 @@
 
 <footer>
   <ion-item>
-    
     <ion-label>Monto Total $ :</ion-label>
-    <ion-input id="number" id="montoTotal" name="montoTotal"  [readonly]="true" >{{formPrecio}}</ion-input>
-    <!--
-    <ion-input id="number" id="montoTotal" name="montoTotal"  [readonly]="true">{{total}}</ion-input>
-    --->
+    <!----<ion-input id="montoTotal" name="montoTotal"  [readonly]="true" >{{formPrecio}}</ion-input>   --->
+    <ion-input id="number" [(ngModel)]="formPrecio" (onChange)="cambioPrecio()" [readonly]="true"></ion-input>
     <ion-button (click)="gotoPago()"><ion-icon name="bag-check-outline"></ion-icon>ir al pago</ion-button>
   </ion-item>
 

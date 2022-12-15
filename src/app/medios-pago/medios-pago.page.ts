@@ -10,14 +10,18 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./medios-pago.page.scss'],
 })
 export class MediosPagoPage implements OnInit {
-
+  
+  medio : any = [];
   constructor(
     private api: ApiService,
     private router: Router,
     private route: ActivatedRoute,
     public alertController: AlertController
 
-  ) { }
+  ) { 
+    this.medio = JSON.parse(localStorage.getItem('mediopago'));
+    console.log(this.medio);
+  }
   
 
   gotoperfil2()
@@ -25,6 +29,7 @@ export class MediosPagoPage implements OnInit {
     this.router.navigate(['/tablinks/perfil']);
   }
   ngOnInit() {
+    console.log(this.medio);
   }
 
 }

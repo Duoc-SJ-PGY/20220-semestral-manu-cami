@@ -13,6 +13,10 @@ import { Storage } from '@ionic/storage';
 })
 export class MedioPagoPage implements OnInit {
   pago = localStorage.getItem('total');
+  medio = {
+    id:0, 
+    nombre: '',
+  }
   constructor(
     private api: ApiService,
     private router: Router,
@@ -41,11 +45,21 @@ export class MedioPagoPage implements OnInit {
   }
 
   pagoDebito(){
-    this.presentAlert();
+    //this.presentAlert();
+    this.medio.id = 1;
+    this.medio.nombre = 'debito';
+    localStorage.setItem('medio', JSON.stringify(this.medio));
+    this.router.navigate(['/banco']);
+    console.log(this.medio);
   }
 
   pagoCredito(){
-    this.presentAlert();
+    //this.presentAlert();
+    this.medio.id = 2;
+    this.medio.nombre = 'credito';
+    localStorage.setItem('medio', JSON.stringify(this.medio));
+    this.router.navigate(['/banco']);
+    console.log(this.medio);
   }
 
   pagoPre(){
@@ -56,6 +70,8 @@ export class MedioPagoPage implements OnInit {
   anularcompra(){
     localStorage.removeItem('carrito');
     localStorage.removeItem('total');
+    //this.listaCart = [];
+    this.api.listCarrito = [];
     this.router.navigate(['/inicio']);
   }
 

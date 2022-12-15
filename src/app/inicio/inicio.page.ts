@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { AlertController, IonSlides } from '@ionic/angular';
+import { NgFor } from '@angular/common';
+import { on } from 'events';
+import { skipUntil } from 'rxjs/operators';
 
 
 
@@ -11,7 +14,7 @@ import { AlertController, IonSlides } from '@ionic/angular';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
- 
+  listCarrito: any=[];
   productos: any = [];
   
   //inicio de componentes del carrusel
@@ -29,10 +32,7 @@ export class InicioPage implements OnInit {
     private api: ApiService,
     public alertController: AlertController
   ) {
-    this.api.getData().subscribe(data => {
-      this.productos = data;
-      //console.log(this.productos);
-    });
+    
    }
 
    //para recorrer el carrusel.
@@ -80,14 +80,15 @@ export class InicioPage implements OnInit {
   });
   await alert.present();
   }
-  /*  método básico sin usar por el momento...
-  agregarCarrito(id:number){
-    
-    this.presentAlert();
-    return this.api.addCart(id);
+  async presentAlert4(){
+    const alert = await this.alertController.create({
+      header: 'Productos',
+      message: 'No hay productos agregados a la lista',
+      buttons: ['OK'],
+  });
+  await alert.present();
   }
-  */
-  
+ 
 
   /*
   el metodo consulta al array generado en el service APi si es que el producto no está
@@ -95,17 +96,17 @@ export class InicioPage implements OnInit {
   */
   agregarCarrito(id:number){
     let existe = false;
-    for (let i = 0; i < this.api.listCarrito.length; i++) {
-      if (this.api.listCarrito[i].id_producto == id) {
+    for (let i = 0; i < this.listCarrito.length; i++) {
+      if (this.listCarrito[i].id_producto == id) {
         existe = true;
         break;
       }
     }
-    var index = this.api.listCarrito.indexOf(id);
+    var index = this.listCarrito.indexOf(id);
     if (index === -1 && existe == false) {
       this.presentAlert();
       console.log("agregado");
-      return this.api.addCart(id); 
+      return this.addCart(id); 
              
     }
     else {
@@ -118,16 +119,49 @@ export class InicioPage implements OnInit {
   //para cambiar al page del detalle.
   gotoCarrito(){
     var persona = localStorage.getItem('usuario');
+    var cc = this.listCarrito.length; 
     if(persona == null){
       this.presentAlert3();
       this.router.navigate(['/login']);
     }else{
-      this.router.navigate(['/detalle']);
+      if (cc == 0) {
+        this.presentAlert4();
+      } else{
+        this.listCarrito = [];
+        this.router.navigate(['/detalle']);
+        
+      }
+      //this.router.navigate(['/detalle']);
     }
+    
   }
 
+  addCart(id: number){
+    //objeto = this.productos.find(x => x.id_producto == id);
+   
+    this.productos.forEach((item) => {
+      if(item.id_producto == id){
+        let objeto = {
+          id_producto: item.id_producto,
+          sku: item.sku,
+          nombre_producto: item.nombre_producto,
+          descripcion: item.descripcion,
+          precio: item.precio,
+          foto: item.foto,
+          cantidad: 1   
+        };
+        this.listCarrito.push(objeto);
+        localStorage.setItem('carrito', JSON.stringify(this.listCarrito));
+        console.log(this.listCarrito);
+      }
+    }
+    );
+  }
 
   ngOnInit() {
-    
+    this.api.getData().subscribe(data => {
+      this.productos = data;
+      console.log(this.productos);
+    });
   }
 }

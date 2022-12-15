@@ -6,5 +6,16 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let item of lista">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>N °: {{item.id}}</ion-card-title>
+          <ion-card-subtitle>Comuna : {{item.comuna}}</ion-card-subtitle>
+        </ion-card-header>      
+        <ion-card-content>Dirección : {{item.direccion}}</ion-card-content>
+      </ion-card>       
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>

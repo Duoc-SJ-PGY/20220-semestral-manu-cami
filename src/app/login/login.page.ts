@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 import { AlertController, NavController} from '@ionic/angular';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -37,9 +38,22 @@ export class LoginPage implements OnInit {
   async ingresar(){
     var f = this.formularioLogin.value;
     var usuario = JSON.parse(localStorage.getItem('usuario'));
+    var cliente = JSON.parse(localStorage.getItem('cliente'));
+    usuario = {nombre:f.nombre, password:f.password};
     
-
-          if(f.nombre == usuario.nombre && f.password == usuario.password){
+    if(usuario == null){
+      if (f.nombre != cliente.nombre){
+        const alert = await this.alertController.create({
+          header: '¡Usuario!',
+          message: 'El usuario no existe.',
+          buttons: ['Aceptar']
+          });
+        await alert.present();
+      }
+      
+    }
+    else{
+          if(f.nombre == cliente.nombre && f.password == cliente.password){
             
                 this.logueado = true;
                 const alert = await this.alertController.create({
@@ -48,7 +62,10 @@ export class LoginPage implements OnInit {
                   buttons: ['Aceptar']
                   });
                   await alert.present();
+                  localStorage.setItem('usuario',JSON.stringify(usuario));
+                  
                   this.router.navigate(['/tablinks/inicio']);
+
                   //console.log("Usuario ingresado");
             }
           else{
@@ -62,7 +79,7 @@ export class LoginPage implements OnInit {
           }
     }
    
-      
+  }   
   }
 
 
